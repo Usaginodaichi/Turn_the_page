@@ -29,6 +29,12 @@
       </tbody>
 
       <tbody>
+        <th class="row">ニックネーム</th>
+        <td><%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
+        </td>
+      </tbody>
+
+      <tbody>
         <th class="row">メールアドレス</th>
         <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </td>

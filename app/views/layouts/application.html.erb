@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>TurnThePage</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport"content="width=device-width, intial-scale=1, maximum-scale=1">
@@ -26,6 +26,20 @@
       </li>
       <% end %>
     </header>
+
+    <main>
+    <p class="notice"><%= notice %></p>
     <%= yield %>
+    </main>
+
+    <footer>
+      <div class="container mt-5 bg-warning">
+        <div class="row">
+          <div class="mx-auto">
+            <p>CopyRight TurnThePage.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
