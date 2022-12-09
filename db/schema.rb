@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 2022_12_08_072624) do
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
     t.string "nickname", null: false
+    t.string "purpose", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "is_deleted", default: "f", null: false
