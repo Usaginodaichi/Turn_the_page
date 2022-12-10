@@ -1,0 +1,2 @@
+class ToDoPost < ApplicationRecord
+end

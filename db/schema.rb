@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_08_072624) do
+ActiveRecord::Schema.define(version: 2022_12_10_143745) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2022_12_08_072624) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "post_id", null: false
+    t.integer "to_do_post_id", null: false
     t.string "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -62,25 +62,14 @@ ActiveRecord::Schema.define(version: 2022_12_08_072624) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "post_id", null: false
+    t.integer "to_do_post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "lists", force: :cascade do |t|
-    t.integer "todo_id", null: false
-    t.string "title", null: false
-    t.boolean "status", default: false, null: false
-    t.date "start_date", null: false
-    t.date "end_date", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "title", null: false
-    t.text "content", null: false
+    t.integer "to_do_post_id"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -94,11 +83,13 @@ ActiveRecord::Schema.define(version: 2022_12_08_072624) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
-  create_table "todos", force: :cascade do |t|
+  create_table "to_do_posts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title", null: false
-    t.string "reason", null: false
-    t.boolean "status", null: false
+    t.string "description", null: false
+    t.boolean "status", default: false, null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -112,7 +103,7 @@ ActiveRecord::Schema.define(version: 2022_12_08_072624) do
     t.string "purpose", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "is_deleted", default: "f", null: false
+    t.boolean "is_deleted", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
