@@ -1,2 +1,14 @@
-<h1>Public::ToDoPosts#index</h1>
-<p>Find me in app/views/public/to_do_posts/index.html.erb</p>
+<h2>投稿一覧</h2>
+<% @todoposts.each do |to_do_post| %>
+<div class="row">
+ <label for="title">Title</label>
+ <%= link_to to_do_post.title, edit_public_to_do_post_path(@todoposts) %>
+ <%= link_to"サブタスクを追加する", new_public_to_do_post_list_path(@todoposts) %>
+ <%= to_do_post.description %>
+ <label for="start_date">START</label>
+ <%= to_do_post.start_date %>
+ <label for="end_date">END</label>
+ <%= to_do_post.end_date %>
+</div>
+<% end %>
+

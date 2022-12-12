@@ -9,12 +9,13 @@ class Public::ToDoPostsController < ApplicationController
     if @todopost.save
       flash[:notice] = "新規投稿が完了しました"
       redirect_to public_to_do_posts_path(@todopost)
-    else
+    elserail
       render :new
     end
   end
 
   def index
+    @todoposts = current_user.to_do_posts.all
   end
 
   def edit
