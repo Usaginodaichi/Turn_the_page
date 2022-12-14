@@ -24,7 +24,19 @@ class Public::ToDoPostsController < ApplicationController
   end
 
   def edit
+    @todopost = current_user.to_do_posts.find(params[:id])
   end
+
+  def update
+    @todopost = current_user.to_do_posts.find(params[:id])
+    if @todopost.update(to_do_post_params)
+      flash[:notice] = "編集が完了しました"
+      redirect_to public_to_do_posts_path
+    else
+      render :edit
+    end
+  end
+
 
 
 

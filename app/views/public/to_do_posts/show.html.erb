@@ -5,6 +5,7 @@
   <p>ユーザーネーム:<%= @todopost.user.nickname %></p>
   <p>投稿日時:<%= @todopost.created_at.strftime('%Y/%m/%d') %></p>
   <% if@todopost.user == current_user %>
+   <%= link_to"編集", edit_public_to_do_post_path(@todopost) %>
    <%= link_to"削除", public_to_do_post_path(@todopost), method: :delete %>
   <% end %>
 </div>
