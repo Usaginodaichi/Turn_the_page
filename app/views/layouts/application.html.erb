@@ -20,6 +20,9 @@
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
+      <li>
+        <%= link_to "投稿一覧", public_to_do_posts_path %>
+      </li>
       <% elsif admin_signed_in? %>
       <li>
         <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>

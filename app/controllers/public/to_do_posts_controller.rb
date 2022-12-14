@@ -15,14 +15,18 @@ class Public::ToDoPostsController < ApplicationController
   end
 
   def index
-    @todoposts = current_user.to_do_posts.all
+    @todoposts = ToDoPost.all
+  end
+
+  def show
+    @todopost = ToDoPost.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def edit
   end
 
-  def show
-  end
+
 
   private
 

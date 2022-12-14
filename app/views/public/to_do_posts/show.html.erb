@@ -1,2 +1,26 @@
-<h1>Public::ToDoPosts#show</h1>
-<p>Find me in app/views/public/to_do_posts/show.html.erb</p>
+<div>
+  <p>タイトル<%= @todopost.title %></p>
+  <p>説明:<%= @todopost.description %></p>
+  <p>投稿ユーザー画像:<%= image_tag @todopost.user.get_profile_image(100,100) %></p>
+  <p>ユーザーネーム:<%= @todopost.user.nickname %></p>
+  <p>投稿日時:<%= @todopost.created_at.strftime('%Y/%m/%d') %></p>
+  <% if@todopost.user == current_user %>
+   <%= link_to"削除", public_to_do_post_path(@todopost), method: :delete %>
+  <% end %>
+</div>
+
+<div>
+  <p>コメント件数:<%= @todopost.post_comments.count %></p>
+  <% @todopost.post_comments.each do |post_comment| %>
+   <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
+   <%= post_comment.user.nickname %>
+   <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+  <% end %>
+</div>
+
+<div>
+  <%= form_with model:[@todopost, @post_comment], url:public_to_do_post_post_comments_path(@todopost) do |f| %>
+   <%= f.text_area:comment, rows:'5', placeholder:"コメントをここに" %>
+   <%= f.submit"送信する" %>
+  <% end %>
+</div>

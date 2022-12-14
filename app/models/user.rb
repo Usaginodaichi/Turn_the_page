@@ -8,7 +8,7 @@ class User < ApplicationRecord
 has_one_attached :profile_image
 
 has_many:to_do_posts, dependent: :destroy
-has_many:comments, dependent: :destroy
+has_many:post_comments, dependent: :destroy
 has_many:favorites, dependent: :destroy
 # relationshipsへの多対多のアソシエーション未設定
 
