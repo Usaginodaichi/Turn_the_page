@@ -8,8 +8,10 @@ class Public::SearchesController < ApplicationController
 
     if @range == "User"
       @users = User.looks(params[:search], params[:word])
+      render :index
     else
-      @Todoposts = ToDoPost.looks(params[:search], params[:word])
+      @todoposts = ToDoPost.looks(params[:search], params[:word])
+      render :index
     end
   end
 

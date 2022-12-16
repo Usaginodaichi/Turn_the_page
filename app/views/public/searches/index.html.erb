@@ -1,3 +1,22 @@
-<% if @range == "User" %>
- <% @users.each do |user| %>
-  <%= user.name %>
+<h2>Results index</h2>
+
+<table class="table table-hover table-inverse">
+ <% if @range == "User" %>
+ <tbody>
+  <% @users.each do |user| %>
+   <tr>
+    <td><%= user.nickname %></td>
+   </tr>
+  <% end %>
+ </tbody>
+ <% else %>
+  <tbody>
+   <% @todoposts.each do |todopost| %>
+   <tr>
+    <td><%= todopost.title %></td>
+    <td><%= todopost.description %></td>
+   </tr>
+  <% end %>
+  </tbody>
+ <% end %>
+</table>
