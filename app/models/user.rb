@@ -20,6 +20,14 @@ def get_profile_image(width, height)
   profile_image.variant(resize_to_limit: [width, height]).processed
 end
 
+def full_name
+  last_name + " " + first_name
+end
+
+def full_name_kana
+  last_name_kana + " " + first_name_kana
+end
+
 def self.looks(search, word)
   if search == "perfect_match"
     @user = User.where("nickname like?", "#{word}")

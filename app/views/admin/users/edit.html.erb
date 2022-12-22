@@ -1,2 +1,51 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<section class="inner">
+  <!--innerの指定は未着手-->
+  <h2><%= @user.full_name %>さんの情報編集画面</h2>
+  <%= form_with model:@user, url:admin_user_path(@user), method: :patch do |f| %>
+   <table class="user_info user_form">
+     <thead>
+       <th></th>
+       <th></th>
+       <th></th>
+     </thead>
+     <tbody>
+       <tr>
+         <td>名前</td>
+         <td><%= f.label :last_name, "(姓)", class: "user_name" %>
+         <%= f.text_field :last_name, :placeholder => "#{@user.last_name}" %></td>
+         <td><%= f.label :first_name, "(名)", class: "user_name" %>
+         <%= f.text_field :first_name, :placeholder => "#{@user.first_name}" %></td>
+       </tr>
+       <tr>
+         <td>フリガナ</td>
+         <td><%= f.label :first_name_kana, "(セイ)" %>
+         <%= f.text_field :first_name_kana, :placeholder => "#{@user.last_name_kana}" %></td>
+         <td><%= f.label :last_name_kana, "(メイ)" %>
+         <%= f.text_field :last_name_kana, :placeholder => "#{@user.first_name_kana}" %></td>
+       </tr>
+       <tr>
+         <td>ニックネーム</td>
+         <td colspan="2"><%= f.text_field :nickname, :placeholder => "#{@user.nickname}" %></td>
+       </tr>
+       <tr>
+         <td>want you remove</td>
+         <td colspan="2"><%= f.text_field :purpose, :placeholder => "#{@user.purpose}" %></td>
+       </tr>
+       <tr>
+         <td>メールアドレス</td>
+         <td colspan="2"><%= f.email_field :email, autocomplete:"email", :placeholder => "#{@user.email}" %></td>
+       </tr>
+       <tr>
+         <td>退会ステータス</td>
+         <td><%= f.radio_button :is_deleted, :true %>
+         <%= f.label :is_deleted, "退会済み", class: "text-delete" %></td>
+         <td><%= f.radio_button :is_deleted, :false %>
+         <%= f.label :is_deleted, "有効", class: "text_delete" %></td>
+       </tr>
+       <tr>
+         <td colspan="3"><%= f.submit "更新", class: "btn btn-primary" %></td>
+       </tr>
+     </tbody>
+   </table>
+  <% end %>
+</section>
