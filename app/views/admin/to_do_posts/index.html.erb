@@ -9,8 +9,6 @@
           <th>title</th>
           <th>理由</th>
           <th>ステータス</th>
-          <th>いつから</th>
-          <th>いつまで</th>
         </tr>
       </thead>
 
@@ -25,13 +23,11 @@
           <td>
             <%= todopost.description %>
           </td>
-          <!--<td>%= todopost.status %></td>-->
-          <!--% if todopost.status == false %>-->
-          <!-- <td>未達成</td>-->
-          <!--% else %>-->
-          <!-- <td>達成</td>-->
-          <!--% end %>-->
-          <!--<td>%= l todopost.start_date %></td>-->
+          <% if todopost.status == false %>
+           <td>未達成</td>
+          <% else %>
+           <td>達成</td>
+          <% end %>
         </tr>
         <% end %>
       </tbody>
