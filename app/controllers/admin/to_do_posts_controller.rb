@@ -7,5 +7,6 @@ class Admin::ToDoPostsController < ApplicationController
   end
 
   def edit
+    @todopost = ToDoPost.find(params[:id])
   end
 end
