@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources:to_do_posts,only:[:new, :create, :index, :show, :edit, :update, :destroy] do
       resources:lists, only:[:new, :create, :edit, :update, :destroy]
       resources:post_comments, only:[:create, :destroy]
+      resource:favorites, only:[:create, :destroy]
     end
     get "search" => "searches#search"
     get 'searches/index'
