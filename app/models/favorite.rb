@@ -1,4 +1,4 @@
 class Favorite < ApplicationRecord
   belongs_to:user
-  belongs_to:to_do_posts
+  belongs_to:to_do_post
 end

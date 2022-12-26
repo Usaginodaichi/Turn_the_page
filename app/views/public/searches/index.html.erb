@@ -5,7 +5,10 @@
  <tbody>
   <% @users.each do |user| %>
    <tr>
-    <td><%= user.nickname %></td>
+    <td><%= link_to public_users_my_page_path(user) do %>
+     <%= user.nickname %>
+     <% end %>
+     </td>
    </tr>
   <% end %>
  </tbody>

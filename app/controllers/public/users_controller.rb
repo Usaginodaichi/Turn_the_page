@@ -1,10 +1,13 @@
 class Public::UsersController < ApplicationController
   def show
-    @user = current_user
+    @user = User.find(params[:id])
+    @todoposts = @user.to_do_posts.page(params[:page]).reverse_order
+    @following_users = @user.following_user
+    @follower_users = @user.follower_user
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def update
@@ -29,8 +32,18 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def follows
+    user = User.find(params[:id])
+    @users = user.following_user.page(params[:page]).per(3).reverse_order
+  end
+
+  def followers
+    user = User.find(params[:id])
+    @user = user.follower_user.page(params[:page]).per(3).reverse_order
+  end
+
   private
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :nickname, :purpose, :email, :is_deleted)
+    params.require(:user).permit(:profile_image, :last_name, :first_name, :last_name_kana, :first_name_kana, :nickname, :purpose, :email, :is_deleted)
   end
 end

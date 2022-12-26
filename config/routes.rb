@@ -27,7 +27,12 @@ Rails.application.routes.draw do
     patch '/users/information' =>'users#update'
     get '/users/unsubscribe' =>'users#unsubscribe'
     patch '/users/withdraw' =>'users#withdraw'
-    resources:users,only:[:index]
+    resources:users,only:[:index] do
+      member do
+        get :follows, :followers
+      end
+      resource :relationships, only:[:create, :destroy]
+    end
     resources:to_do_posts,only:[:new, :create, :index, :show, :edit, :update, :destroy] do
       resources:lists, only:[:new, :create, :edit, :update, :destroy]
       resources:post_comments, only:[:create, :destroy]

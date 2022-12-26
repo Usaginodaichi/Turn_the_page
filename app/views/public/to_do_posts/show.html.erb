@@ -8,6 +8,19 @@
    <%= link_to"編集", edit_public_to_do_post_path(@todopost) %>
    <%= link_to"削除", public_to_do_post_path(@todopost), method: :delete %>
   <% end %>
+  <% if @todopost.favorited_by?(current_user) %>
+   <p>
+     <%= link_to public_to_do_post_favorites_path(@todopost), method: :delete do %>
+      ♥<%= @todopost.favorites.count %>いいね
+     <% end %>
+   </p>
+  <% else %>
+   <p>
+       <%= link_to public_to_do_post_favorites_path(@todopost), method: :post do %>
+        ♡<%= @todopost.favorites.count %>いいね
+       <% end %>
+   </p>
+  <% end %>
 </div>
 
 <div>

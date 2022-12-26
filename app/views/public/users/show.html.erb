@@ -35,4 +35,6 @@
   </tbody>
 </table>
 
-<%= link_to"編集する", public_users_information_edit_path(@user) %>
+<% if @user == current_user %>
+ <%= link_to"編集する", public_users_information_edit_path(@user) %>
+<% end %>
