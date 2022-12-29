@@ -22,12 +22,12 @@ Rails.application.routes.draw do
 
   namespace :public do
     # userマイページ、編集画面、退会確認画面(unsubscribe)
-    get '/users/my_page' =>'users#show'
+    # get '/users/my_page' =>'users#show'
     get '/users/information/edit' =>'users#edit'
     patch '/users/information' =>'users#update'
     get '/users/unsubscribe' =>'users#unsubscribe'
     patch '/users/withdraw' =>'users#withdraw'
-    resources:users,only:[:index] do
+    resources:users,only:[:index, :show] do
       member do
         get :follows, :followers
       end

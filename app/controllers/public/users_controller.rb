@@ -39,7 +39,7 @@ class Public::UsersController < ApplicationController
 
   def followers
     user = User.find(params[:id])
-    @user = user.follower_user.page(params[:page]).per(3).reverse_order
+    @users = user.follower_user.page(params[:page]).per(3).reverse_order
   end
 
   private
