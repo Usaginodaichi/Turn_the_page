@@ -16,7 +16,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-orange">
         <div class="container bg-warning">
           <a class="navbar-brand" href="/">
-            <span>TurnThePage</span>
+            <span class="font-cursive">TurnThePage</span>
           </a>
           <!--<div class="input-group">-->
           <!--  <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="キーワードを入力"></input>-->
@@ -43,12 +43,12 @@
                 <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
               </li>
               <% else %>
-              <li>
-                <%= link_to "新規登録", new_user_registration_path %>
-              </li>
-              <li>
-                <%= link_to "ログイン", new_user_session_path %>
-              </li>
+              <!--<li>-->
+              <!--  %= link_to "新規登録", new_user_registration_path %>-->
+              <!--</li>-->
+              <!--<li>-->
+              <!--  %= link_to "ログイン", new_user_session_path %>-->
+              <!--</li>-->
               <% end %>
             </ul>
           </div>
