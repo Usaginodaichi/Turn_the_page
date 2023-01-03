@@ -16,6 +16,7 @@ class Public::ToDoPostsController < ApplicationController
 
   def index
     @todoposts = ToDoPost.all
+    @user = current_user
   end
 
   def show

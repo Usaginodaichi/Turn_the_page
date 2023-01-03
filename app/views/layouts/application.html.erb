@@ -18,20 +18,26 @@
           <a class="navbar-brand" href="/">
             <span class="font-cursive">TurnThePage</span>
           </a>
-          <!--<div class="input-group">-->
-          <!--  <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="キーワードを入力"></input>-->
-          <!--  <span class="input-group-btn input-group-append">-->
-          <!--  <submit type="submit" id="btn-search" class="btn btn-primary"><i class="fas fa-search"></i> 検索</submit></span>-->
-          <!--</div>-->
           <button class="navbar-toggler" type="button" data-toggle="callapse" data-target="#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
-              <li>
-                <%= link_to "マイページ", public_user_path(current_user.id) %>
-              </li>
+              <div class="container">
+                <div class="row">
+                  <div class="col-auto mx-auto">
+                    <div class="search_form">
+                      <%= form_with url:public_search_path, local: :true, method: :get do |f| %>
+                      <%= f.text_field :word %>
+                      <%= f.select :range, options_for_select([["ユーザー",'User'], ["投稿",'ToDoPost']]) %>
+                      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+                      <%= f.submit "検索", class: "btn btn-primary" %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <li>
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
               </li>
@@ -43,27 +49,11 @@
                 <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
               </li>
               <% else %>
-              <!--<li>-->
-              <!--  %= link_to "新規登録", new_user_registration_path %>-->
-              <!--</li>-->
-              <!--<li>-->
-              <!--  %= link_to "ログイン", new_user_session_path %>-->
-              <!--</li>-->
               <% end %>
             </ul>
           </div>
         </div>
       </nav>
-      <% if user_signed_in? %>
-      <div class="search_form">
-        <%= form_with url:public_search_path, local: :true, method: :get do |f| %>
-         <%= f.text_field :word %>
-         <%= f.select :range, options_for_select([["ユーザー",'User'], ["投稿",'ToDoPost']]) %>
-         <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
-         <%= f.submit "検索", class: "btn btn-primary" %>
-        <% end %>
-      </div>
-      <% end %>
     </header>
 
     <main>

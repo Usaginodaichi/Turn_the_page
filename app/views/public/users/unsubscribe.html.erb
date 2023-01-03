@@ -6,7 +6,7 @@
   </div>
 
   <div class="row">
-    <h5 class="px-3">
+    <h5 class="px-3 mx-auto">
       退会すると、会員登録情報や</br>
       これまでの情報が閲覧できなくなります。</br>
       退会する場合は、「退会する」をクリックしてください。</h2>
@@ -14,12 +14,12 @@
   </div>
 
   <div class="row">
-   <%= link_to "退会しない", public_users_my_page_path(@user), class:'btn btn-primary'; %>
+    <div class="col-auto mx-auto">
+     <%= link_to "退会しない", public_user_path(@user), class:'btn btn-primary px-3'; %>
+    </div>
+    <div class="col-auto mx-auto">
+     <%= form_with model: @user, url:public_users_withdraw_path(@user), method: :patch do |f| %>
+      <%= f.submit'退会する', "data-confirm" => "本当に退会してもよろしいですか？", class:'btn btn-danger px-3'; %>
+     <% end %>
+    </div>
   </div>
-
-  <div class="row">
-   <%= form_with model: @user, url:public_users_withdraw_path(@user), method: :patch do |f| %>
-    <%= f.submit'退会する', "data-confirm" => "本当に退会してもよろしいですか？", class:'btn btn-danger'; %>
-   <% end %>
- </div>
-</div>
