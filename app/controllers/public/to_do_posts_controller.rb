@@ -21,6 +21,7 @@ class Public::ToDoPostsController < ApplicationController
 
   def show
     @todopost = ToDoPost.find(params[:id])
+    @user = current_user
     @post_comment = PostComment.new
   end
 
@@ -36,6 +37,12 @@ class Public::ToDoPostsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @todopost = current_user.to_do_posts.find(params[:id])
+    @todopost.destroy
+    redirect_to public_to_do_posts_path
   end
 
 
