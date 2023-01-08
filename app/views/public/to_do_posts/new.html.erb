@@ -1,4 +1,13 @@
 <h2>ToDoリスト新規投稿画面</h2>
+<% if @todopost.errors.any? %>
+  <%= @todopost.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @todopost.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @todopost, url:public_to_do_posts_path, id:"new_to_do_post", class:'new_to_do_post' do |f| %>
   <%= render :partial => 'post', :locals => {:f => f} %>
 

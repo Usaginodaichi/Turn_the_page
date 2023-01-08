@@ -1,4 +1,11 @@
 ja:
+ activerecord:
+  attributes:
+   to_do_post:
+    description: コメント内容
+    start_date: 開始日
+    end_date: 終了日
  time:
   formats:
    default: "%Y/%m/%d %H:%M:%S"
+

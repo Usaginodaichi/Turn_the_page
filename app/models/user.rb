@@ -15,6 +15,36 @@ has_many:followed, class_name: "Relationship", foreign_key: "followed_id", depen
 has_many :following_user, through: :follower, source: :followed
 has_many :follower_user, through: :followed, source: :follower
 
+validates :last_name, presence: true
+validates :first_name, presence: true
+validates :last_name_kana, presence: true
+validates :first_name_kana, presence: true
+# ニックネームは一意性を持たせる
+validates :nickname,
+ uniqueness: true,
+ length: {minimum:2, maximum: 20}
+
+validates :introduction,
+ length:{maximum: 50}
+
+validates :purpose,
+ presence: true,
+ length:{maximum: 20}
+
+validates :email, presence: true
+validates :encrypted_password,
+ presence: true,
+ length:{minimum: 6}
+
+validates :is_deleted,
+ inclusion: { in: [:true, false] }
+
+def active_for_authentication?
+  super && (is_deleted == false)
+end
+
+
+
 # ユーザーをフォローする
 def follow(user_id)
   follower.create(followed_id: user_id)
@@ -46,6 +76,7 @@ def full_name_kana
   last_name_kana + " " + first_name_kana
 end
 
+# 検索機能、完全一致と部分一致
 def self.looks(search, word)
   if search == "perfect_match"
     @user = User.where("nickname like?", "#{word}")

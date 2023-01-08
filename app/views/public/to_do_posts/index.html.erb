@@ -3,7 +3,7 @@
   <%= render'public/users/user', user:@user %>
 
   <div class="card-list col-md-8 px-5 mx-auto">
-  <h4>投稿一覧</h4>
+   <h4>投稿一覧</h4>
    <% @todoposts.each do |to_do_post| %>
    <div class="card w-50 mx-auto shadow-lg">
     <%= link_to public_to_do_post_path(to_do_post.id) do %>

@@ -16,7 +16,7 @@
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light bg-orange">
-        <div class="container bg-warning">
+        <div class="container bg-warning justify-content-center">
           <a class="navbar-brand" href="/">
             <span class="font-cursive">TurnThePage</span>
           </a>
@@ -26,29 +26,30 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
-              <div class="container">
-                <div class="row">
-                  <div class="col-auto mx-auto">
-                    <div class="search_form">
-                      <%= form_with url:public_search_path, local: :true, method: :get do |f| %>
-                      <%= f.text_field :word %>
-                      <%= f.select :range, options_for_select([["ユーザー",'User'], ["投稿",'ToDoPost']]) %>
-                      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
-                      <%= f.submit "検索", class: "btn btn-primary" %>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <li>
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                <%= form_with url:public_search_path, local: :true, method: :get do |f| %>
+                 <%= f.text_field :word %>
+                 <%= f.select :range, options_for_select([["ユーザー",'User'], ["投稿",'ToDoPost']]) %>
+                 <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+                 <%= f.submit "検索", class: "btn btn-primary" %>
+                <% end %>
               </li>
               <li>
-                <%= link_to "投稿一覧", public_to_do_posts_path %>
+                <%= link_to destroy_user_session_path, class:'nav-link text-black', method: :delete do %>
+                 <i class="fas fa-sign-out-alt"></i>
+                 ログアウト
+                <% end %>
               </li>
+              <li>
+                <%= link_to public_to_do_posts_path, class:'nav-link text-black' do %>
+                 <i class="fas fa-book-open"></i>
+                 投稿一覧
+                <% end %>
+              </li>
+
               <% elsif admin_signed_in? %>
               <li>
-                <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
+                <%= link_to "管理者ログアウト", destroy_admin_session_path, class:'nav-link text-black', method: :delete %>
               </li>
               <% else %>
               <% end %>

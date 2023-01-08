@@ -16,7 +16,9 @@
   <tbody>
    <% @todoposts.each do |todopost| %>
    <tr>
-    <td><%= todopost.title %></td>
+    <td><%= link_to public_to_do_post_path(todopost) do %>
+     <%= todopost.title %></td>
+    <% end %>
     <td><%= todopost.description %></td>
    </tr>
   <% end %>

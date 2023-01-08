@@ -63,3 +63,4 @@ gem 'image_processing', '~> 1.2'
 
 gem 'pry-byebug', group: :development
 
+gem 'rails-i18n'

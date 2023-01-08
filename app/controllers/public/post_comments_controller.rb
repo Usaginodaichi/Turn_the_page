@@ -8,6 +8,12 @@ class Public::PostCommentsController < ApplicationController
     if post_comment.save
       flash[:notice] = "コメントしました"
       redirect_to public_to_do_post_path(to_do_post)
+    else
+      flash[:notice] = 'コメントに失敗しました'
+      @todopost = ToDoPost.find(params[:to_do_post_id])
+      @user = current_user
+      @post_comment = PostComment.new
+      render template: "public/to_do_posts/show"
     end
   end
 
