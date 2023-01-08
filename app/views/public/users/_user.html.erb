@@ -1,5 +1,5 @@
 <div class="col-md-3">
-  <h2>ユーザー情報</h2>
+  <h2>Login User</h2>
   <% if user.profile_image.attached? %>
    <%= image_tag user.get_profile_image(100,100) %>
   <% else %>
@@ -24,11 +24,17 @@
   </table>
 
   <div class="row">
-    <%= link_to public_users_information_edit_path(user.id), class:"btn btn-outline-secondary btn-block" do %>
-     <i class="fas fa-user-cog"></i>
+    <%= link_to public_user_path(user.id), class:"btn btn-outline-secondary btn-block" do %>
+     <i class="fas fa-user-cog"></i><%= "マイページ" %>
     <% end %>
     <%= link_to new_public_to_do_post_path, class:"btn btn-outline-secondary btn-block" do %>
-     <%= "新規投稿" %>
+     <i class="fas fa-plus-circle"></i><%= "新規投稿" %>
+    <% end %>
+    <%= link_to destroy_user_session_path, class:"btn btn-outline-secondary btn-block", method: :delete do %>
+     <i class="fas fa-sign-out-alt"></i><%= "ログアウト" %>
+    <% end %>
+    <%= link_to public_to_do_posts_path, class:"btn btn-outline-secondary btn-block" do %>
+     <i class="fas fa-book-open"></i><%= "投稿一覧" %>
     <% end %>
   </div>
 

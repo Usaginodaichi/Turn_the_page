@@ -42,6 +42,12 @@ class Public::UsersController < ApplicationController
     @users = user.follower_user.page(params[:page]).per(3).reverse_order
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:to_do_post_id)
+    @favorite_posts = ToDoPost.find(favorites)
+  end
+
   private
   def user_params
     params.require(:user).permit(:profile_image, :last_name, :first_name, :last_name_kana, :first_name_kana, :nickname, :introduction, :purpose, :email, :is_deleted)

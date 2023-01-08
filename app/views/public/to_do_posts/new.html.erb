@@ -1,24 +1,7 @@
 <h2>ToDoリスト新規投稿画面</h2>
 <%= form_with model: @todopost, url:public_to_do_posts_path, id:"new_to_do_post", class:'new_to_do_post' do |f| %>
- <%= f.label :Title %><br />
- <%= f.text_field :title, autofocus: true, id:"inputtitle", placeholder:"タイトル" %>
- <%= f.text_area :description, autofocus: true, id:"inputdescription", placeholder:"投稿内容を書く" %>
- <div class="form-inline">
-   <div class="form-group">
-     <%= f.label :START %>
-     <%= f.date_field :start_date, class: 'form-control' %>
-   </div>
-   <div class="form-group">
-     <%= f.label :END %>
-     <%= f.date_field :end_date, class: 'form-control' %>
-   </div>
-   <div class="form-group">
-    <label for="inputpostImage">画像</label>
-    <%= f.file_field :image, placeholder:"画像", accept: "image/*" %>
-   </div>
- </div>
+  <%= render :partial => 'post', :locals => {:f => f} %>
 
- <%= f.submit"投稿する", class:'btn btn-success' %>
  <% end %>
 
 
