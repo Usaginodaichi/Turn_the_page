@@ -1,5 +1,5 @@
 <h2>投稿編集画面</h2>
-<%= form_with model: @todopost, url:public_to_do_post_path, method: :patch do |f| %>
+<%= form_with model: @todopost, url:admin_to_do_post_path, method: :patch do |f| %>
 <div class="form-group">
   <%= f.label :Title %></br>
   <%= f.text_field :title, autofocus: true, id:"inputtitle", placeholder:"タイトル" %>

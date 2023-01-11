@@ -14,7 +14,11 @@
      <div class="row">
       <div class="col-2">
        <%= link_to public_user_path(to_do_post.user) do %>
-        <%= image_tag to_do_post.user.get_profile_image(50,50), class:"mt-3 rounded-circle"; %>
+        <% if to_do_post.user.profile_image.attached? %>
+         <%= image_tag to_do_post.user.get_profile_image(50,50), class:"mt-3 rounded-circle"; %>
+        <% else %>
+         <%= image_tag 'no_image.jpg', size:'50x50', class:"mt-3 rounded-circle";  %>
+        <% end %>
        <% end %>
       </div>
       <div class="col-10">
@@ -38,23 +42,3 @@
   </div>
  </div>
 </div>
-<!--</div><h2>投稿一覧</h2>-->
-<!--% @todoposts.each do |to_do_post| %>-->
-<!--<div class="group">-->
-<!-- <label for="title">Title</label>-->
-<!-- %= link_to to_do_post.title, public_to_do_post_path(to_do_post.id) %>-->
-<!-- %= link_to"サブタスクを追加する", new_public_to_do_post_list_path(to_do_post.id) %>-->
-<!--</div>-->
-<!--<div class="group">-->
-<!-- %= to_do_post.description %>-->
-<!--</div>-->
-<!--<div class="group">-->
-<!-- <label for="start_date">START</label>-->
-<!-- %= to_do_post.start_date %>-->
-<!--</div>-->
-<!--<div class="group">-->
-<!-- <label for="end_date">END</label>-->
-<!--%= to_do_post.end_date %>-->
-<!--</div>-->
-<!--% end %>-->
-

@@ -48,7 +48,9 @@ Rails.application.routes.draw do
     root to:"homes#top"
     get 'users/:user_id/to_do_posts' => 'to_do_posts#index', as:'user_to_do_posts'
     resources:users, only:[:show, :edit, :update]
-    resources:to_do_posts, only:[:index, :edit, :update]
+    resources:to_do_posts, only:[:index, :edit, :update, :destroy] do
+      resources:post_comments, only:[:destroy]
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

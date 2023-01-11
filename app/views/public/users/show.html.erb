@@ -10,7 +10,13 @@
         <tbody>
           <tr>
             <th>プロフィール写真</th>
-             <td><%= image_tag @user.get_profile_image(100,100) %></td>
+             <td>
+              <% if @user.profile_image.attached? %>
+               <%= image_tag @user.get_profile_image(100,100) %>
+              <% else %>
+               <%= image_tag'no_image.jpg' %>
+              <% end %>
+            </td>
             </tr>
             <tr>
               <th>名前</th>
