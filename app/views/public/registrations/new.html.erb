@@ -41,6 +41,12 @@
       </tbody>
 
       <tbody>
+        <th class="row">自己紹介</th>
+        <td><%= f.text_area :introduction, autofocus: true, autocomplete: "introduction" %>
+        </td>
+      </tbody>
+
+      <tbody>
         <th class="row">メールアドレス</th>
         <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </td>

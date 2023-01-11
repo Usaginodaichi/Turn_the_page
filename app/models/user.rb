@@ -34,8 +34,6 @@ class User < ApplicationRecord
    presence: true,
    length:{minimum: 6}
 
-  validates :is_deleted,
-   inclusion: { in: [:true, false] }
 
   def active_for_authentication?
     super && (is_deleted == false)
