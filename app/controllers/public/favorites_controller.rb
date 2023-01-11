@@ -1,4 +1,5 @@
 class Public::FavoritesController < ApplicationController
+  before_action :authenticate_user!
   def create
     to_do_post = ToDoPost.find(params[:to_do_post_id])
     favorite = current_user.favorites.new(to_do_post_id:to_do_post.id)

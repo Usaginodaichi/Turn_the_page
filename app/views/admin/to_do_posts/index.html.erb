@@ -16,7 +16,7 @@
         <% @todoposts.each do |todopost| %>
         <tr>
           <td>
-            <%= link_to edit_admin_to_do_post_path(todopost) do %>
+            <%= link_to admin_to_do_post_path(todopost) do %>
              <%= todopost.title %>
             <% end %>
           </td>

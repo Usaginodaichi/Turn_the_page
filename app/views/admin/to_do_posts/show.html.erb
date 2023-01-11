@@ -1,6 +1,5 @@
 <div class="container px-5 px-sm-0">
  <div class="row">
-  <%= render'public/users/user', user:@user %>
 
   <div class="card-list col-md-8 px-5 mx-auto">
    <div class="card w-100 mx-auto shadow-lg">
@@ -9,68 +8,53 @@
     <div class="card-body">
      <div class="row">
       <div class="col-2">
-       <%= link_to public_user_path(@todopost.user) do %>
         <% if @todopost.user.profile_image.attached? %>
          <%= image_tag @todopost.user.get_profile_image(50,50), class:"mt-3 rounded-circle"; %>
         <% else %>
          <%= image_tag 'no_image.jpg', size:'50x50', class:"mt-3 rounded-circle";  %>
         <% end %>
-       <% end %>
       </div>
       <div class="col-10">
        <div class="card-title">
-        <%= link_to(public_to_do_post_path(@todopost.id), class:"text-dark") do %>
         <strong><i class="far fa-flag"></i><span><%= @todopost.title %></span></strong>
-        <% end %>
-        <% if @todopost.status == true %>
-         <span><i class="fas fa-star"></i></span>
-        <% else %>
-        <% end %>
         <p class="card-text">説明:<%= @todopost.description %></p>
         <span><i class="fas fa-user"></i><%= @todopost.user.nickname %> | </span>
         <p class="card-text">投稿日時:<%= @todopost.created_at.strftime('%Y/%m/%d') %></p>
         <p class="card-text">目標完了日:<%= @todopost.end_date.strftime('%Y/%m/%d') %></p>
-        <% if@todopost.user == current_user %>
-         <%= link_to"編集する", edit_public_to_do_post_path(@todopost), class:"btn btn-primary" %>
-         <%= link_to"削除する", public_to_do_post_path(@todopost), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-sm btn-danger" %>
-        <% end %>
-        <% if @todopost.favorited_by?(current_user) %>
-         <p><%= link_to public_to_do_post_favorites_path(@todopost), method: :delete do %>
-          ♥<%= @todopost.favorites.count %>いいね
-          <% end %></p>
+
+         <%= link_to"編集する", edit_admin_to_do_post_path(@todopost), class:"btn btn-sm btn-primary" %>
+         <%= link_to"削除する", admin_to_do_post_path(@todopost), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-sm btn-danger" %>
+        <% if @todopost.favorited_by?(@todopost.user) %>
+          <p>
+            ♥<%= @todopost.favorites.count %>いいね
+          </p>
         <% else %>
-        <p><%= link_to public_to_do_post_favorites_path(@todopost), method: :post do %>
-         ♡<%= @todopost.favorites.count %>いいね
-         <% end %></p>
+         <p>
+           ♡<%= @todopost.favorites.count %>いいね
+         </p>
         <% end %>
         <div class="border">
         <p>コメント件数:<%= @todopost.post_comments.count %></p>
         <% @todopost.post_comments.each do |post_comment| %>
         <p>
-         <%= link_to public_user_path(post_comment.user.id) do %>
           <% if post_comment.user.profile_image.attached? %>
            <%= image_tag post_comment.user.get_profile_image(50,50), class:"mt-3 rounded-circle"; %>
           <% else %>
            <%= image_tag 'no_image.jpg', size:'50x50', class:"mt-3 rounded-circle";  %>
           <% end %>
-         <% end %></p>
+        </p>
         <%= post_comment.user.nickname %>
         <p><%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
         <p><%= post_comment.comment %>
-        <% if post_comment.user == current_user %>
-        　<%= link_to "削除する", public_to_do_post_post_comment_path(@todopost.id, post_comment.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-sm btn-danger" %>
-        <% end %></p>
+        　<%= link_to "削除する", admin_to_do_post_post_comment_path(@todopost.id, post_comment.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-sm btn-danger" %>
+        </p>
         <% end %>
-        <%= form_with model:[@todopost, @post_comment], url:public_to_do_post_post_comments_path(@todopost) do |f| %>
-         <%= f.text_area:comment, rows:'5', placeholder:"コメントをここに" %>
-         <%= f.submit"送信する" %>
-        <% end %>
-        </div>
         </div>
        </div>
       </div>
      </div>
     </div>
+   </div>
   </div>
  </div>
 </div>

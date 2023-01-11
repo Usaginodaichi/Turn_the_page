@@ -9,7 +9,11 @@
         <%= link_to public_user_path(user) do %>
         <p class="caption h4"><%= user.nickname %></p>
         <div class="d-flex">
-          <%= image_tag user.get_profile_image(50,50), class:"mb-3 mt-2 ml-3 profile_image" %>
+          <% if user.profile_image.attached? %>
+           <%= image_tag user.get_profile_image(50,50), class:"mb-3 mt-2 ml-3 profile_image" %>
+          <% else %>
+           <%= image_tag 'no_image.jpg', size:'50x50' %>
+          <% end %>
         </div>
         <% end %>
       </div>
