@@ -73,3 +73,6 @@ end
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+
+gem 'mini_magick'
+gem 'aws-sdk-s3', require: false
