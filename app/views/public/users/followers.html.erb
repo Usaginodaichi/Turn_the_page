@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
       <% @users.each do |user| %>
       <div class="one-post card w-100">
-        <%= link_to public_user_path(user) do %>
+        <%= link_to user_path(user) do %>
         <p class="caption h4"><%= user.nickname %></p>
         <div class="d-flex">
           <% if user.profile_image.attached? %>

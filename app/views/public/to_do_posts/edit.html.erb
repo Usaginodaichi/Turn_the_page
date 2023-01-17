@@ -1,4 +1,4 @@
 <h2>投稿編集画面</h2>
-<%= form_with model: @todopost, url:public_to_do_post_path, method: :patch do |f| %>
+<%= form_with model: @todopost, url:to_do_post_path, method: :patch do |f| %>
    <%= render :partial => 'post', :locals => {:f => f, :edit_flag => true} %>
 <% end %>

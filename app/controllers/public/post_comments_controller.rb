@@ -7,7 +7,7 @@ class Public::PostCommentsController < ApplicationController
     post_comment.to_do_post_id = to_do_post.id
     if post_comment.save
       flash[:notice] = "コメントしました"
-      redirect_to public_to_do_post_path(to_do_post)
+      redirect_to to_do_post_path(to_do_post)
     else
       flash[:notice] = 'コメントに失敗しました'
       @todopost = ToDoPost.find(params[:to_do_post_id])
@@ -20,7 +20,7 @@ class Public::PostCommentsController < ApplicationController
   def destroy
     to_do_post = ToDoPost.find(params[:to_do_post_id])
     PostComment.find_by(id: params[:id],to_do_post_id: params[:to_do_post_id]).destroy
-    redirect_to public_to_do_post_path(to_do_post)
+    redirect_to to_do_post_path(to_do_post)
   end
 
   private

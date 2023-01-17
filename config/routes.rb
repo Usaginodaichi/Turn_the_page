@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'top' =>'public/homes#top'
   root to:"public/homes#top"
 
-  namespace :public do
+  scope module: :public do
     # userマイページ、編集画面、退会確認画面(unsubscribe)
     # get '/users/my_page' =>'users#show'
     get '/users/information/edit' =>'users#edit'

@@ -24,16 +24,16 @@
   </table>
 
   <div class="row">
-    <%= link_to public_user_path(user.id), class:"btn btn-outline-secondary btn-block" do %>
+    <%= link_to user_path(user.id), class:"btn btn-outline-secondary btn-block" do %>
      <i class="fas fa-user-cog"></i><%= "マイページ" %>
     <% end %>
-    <%= link_to new_public_to_do_post_path, class:"btn btn-outline-secondary btn-block" do %>
+    <%= link_to new_to_do_post_path, class:"btn btn-outline-secondary btn-block" do %>
      <i class="fas fa-plus-circle"></i><%= "新規投稿" %>
     <% end %>
     <%= link_to destroy_user_session_path, class:"btn btn-outline-secondary btn-block", method: :delete do %>
      <i class="fas fa-sign-out-alt"></i><%= "ログアウト" %>
     <% end %>
-    <%= link_to public_to_do_posts_path, class:"btn btn-outline-secondary btn-block" do %>
+    <%= link_to to_do_posts_path, class:"btn btn-outline-secondary btn-block" do %>
      <i class="fas fa-book-open"></i><%= "投稿一覧" %>
     <% end %>
   </div>

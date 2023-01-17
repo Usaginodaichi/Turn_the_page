@@ -8,7 +8,7 @@ class Public::ToDoPostsController < ApplicationController
     @todopost = current_user.to_do_posts.new(to_do_post_params)
     if @todopost.save
       flash[:notice] = "新規投稿が完了しました"
-      redirect_to public_to_do_posts_path(@todopost)
+      redirect_to to_do_posts_path(@todopost)
     else
       render :new
     end
@@ -33,7 +33,7 @@ class Public::ToDoPostsController < ApplicationController
     @todopost = current_user.to_do_posts.find(params[:id])
     if @todopost.update(to_do_post_params)
       flash[:notice] = "編集が完了しました"
-      redirect_to public_to_do_posts_path
+      redirect_to to_do_posts_path
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class Public::ToDoPostsController < ApplicationController
   def destroy
     @todopost = current_user.to_do_posts.find(params[:id])
     @todopost.destroy
-    redirect_to public_to_do_posts_path
+    redirect_to to_do_posts_path
   end
 
 

@@ -27,7 +27,7 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
               <li>
-                <%= form_with url:public_search_path, local: :true, method: :get do |f| %>
+                <%= form_with url:search_path, local: :true, method: :get do |f| %>
                  <%= f.text_field :word %>
                  <%= f.select :range, options_for_select([["ユーザー",'User'], ["投稿",'ToDoPost']]) %>
                  <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
@@ -41,7 +41,7 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to public_to_do_posts_path, class:'nav-link text-black' do %>
+                <%= link_to to_do_posts_path, class:'nav-link text-black' do %>
                  <i class="fas fa-book-open"></i>
                  投稿一覧
                 <% end %>

@@ -15,10 +15,10 @@
 
   <div class="row">
     <div class="col-auto mx-auto">
-     <%= link_to "退会しない", public_user_path(@user), class:'btn btn-primary px-3'; %>
+     <%= link_to "退会しない", user_path(@user), class:'btn btn-primary px-3'; %>
     </div>
     <div class="col-auto mx-auto">
-     <%= form_with model: @user, url:public_users_withdraw_path(@user), method: :patch do |f| %>
+     <%= form_with model: @user, url:users_withdraw_path(@user), method: :patch do |f| %>
       <%= f.submit'退会する', "data-confirm" => "本当に退会してもよろしいですか？", class:'btn btn-danger px-3'; %>
      <% end %>
     </div>

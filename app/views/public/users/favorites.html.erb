@@ -6,7 +6,7 @@
   <h4>お気に入り投稿一覧</h4>
    <% @favorite_posts.each do |to_do_post| %>
    <div class="card w-50 mx-auto shadow-lg">
-    <%= link_to public_to_do_post_path(to_do_post.id) do %>
+    <%= link_to to_do_post_path(to_do_post.id) do %>
      <%= image_tag to_do_post.get_image, class:"card-img-top"; %>
     <% end %>
 
@@ -17,7 +17,7 @@
       </div>
       <div class="col-10">
        <div class="card-title">
-        <%= link_to(public_to_do_post_path(to_do_post.id), class:"text-dark") do %>
+        <%= link_to(to_do_post_path(to_do_post.id), class:"text-dark") do %>
         <strong><i class="far fa-flag"></i><span><%= to_do_post.title %></span></strong>
         <% end %>
         <p class="card-text">説明:<%= to_do_post.description %></p>
@@ -26,7 +26,7 @@
         <% else %>
         <% end %>
         <span><i class="fas fa-user"></i><%= to_do_post.user.nickname %> | </span>
-        <span><%= link_to"#{to_do_post.post_comments.count}コメント", public_to_do_post_path(to_do_post.id), class:"text-dark" %></span>
+        <span><%= link_to"#{to_do_post.post_comments.count}コメント", to_do_post_path(to_do_post.id), class:"text-dark" %></span>
        </div>
       </div>
      </div>

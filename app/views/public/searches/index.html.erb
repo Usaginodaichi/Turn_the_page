@@ -5,7 +5,7 @@
  <tbody>
   <% @users.each do |user| %>
    <tr>
-    <td><%= link_to public_user_path(user) do %>
+    <td><%= link_to user_path(user) do %>
      <%= user.nickname %>
      <% end %>
      </td>
@@ -16,7 +16,7 @@
   <tbody>
    <% @todoposts.each do |todopost| %>
    <tr>
-    <td><%= link_to public_to_do_post_path(todopost) do %>
+    <td><%= link_to to_do_post_path(todopost) do %>
      <%= todopost.title %></td>
     <% end %>
     <td><%= todopost.description %></td>
