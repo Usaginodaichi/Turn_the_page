@@ -30,10 +30,6 @@ class User < ApplicationRecord
    length:{maximum: 20}
 
   validates :email, presence: true
-  validates :encrypted_password,
-   presence: true,
-   length:{minimum: 6}
-
 
   def active_for_authentication?
     super && (is_deleted == false)
