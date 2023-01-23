@@ -1,6 +1,15 @@
 ja:
  activerecord:
   attributes:
+   user:
+    last_name: 姓
+    first_name: 名
+    last_name_kana: セイ
+    first_name_kana: メイ
+    nickname: ニックネーム
+    purpose: 目的
+    introduction: 自己紹介
+    is_deleted: 退会
    to_do_post:
     description: コメント内容
     start_date: 開始日

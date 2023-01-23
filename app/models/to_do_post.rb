@@ -12,12 +12,15 @@ class ToDoPost < ApplicationRecord
 
   validates :status, inclusion: { in: [true, false] }
 
+  validates :start_date, presence: true
+  validates :end_date, presence: true
+
   # 終了日は開始日より前の日付で登録できないようにする
   validate :start_end_check
 
   def start_end_check
-    errors.add(:end_date, "は開始日より前の日付は登録できません。")unless
-    self.start_date < self.end_date
+    errors.add(:end_date, "は開始日より前の日付は登録できません。") unless
+    (self.start_date).to_s < self.end_date.to_s
   end
 
   def favorited_by?(user)
