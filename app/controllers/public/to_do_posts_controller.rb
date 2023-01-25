@@ -15,7 +15,8 @@ class Public::ToDoPostsController < ApplicationController
   end
 
   def index
-    @todoposts = ToDoPost.all
+    # 新規投稿順に表示する
+    @todoposts = ToDoPost.order(id: :DESC).page(params[:page])
     @user = current_user
   end
 
