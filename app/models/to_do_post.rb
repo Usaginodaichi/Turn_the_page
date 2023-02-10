@@ -27,6 +27,7 @@ class ToDoPost < ApplicationRecord
     favorites.exists?(user_id:user.id)
   end
 
+# 検索機能、完全一致と部分一致で設定
   def self.looks(search, word)
     if search == "perfect_match"
       @todopost = ToDoPost.where("title like?","#{word}")
