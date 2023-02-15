@@ -21,10 +21,12 @@ class User < ApplicationRecord
   validates :nickname,
    uniqueness: true,
    length: {minimum:2, maximum: 20}
-
+   
+# 自己紹介文、必須にはしない
   validates :introduction,
    length:{maximum: 50}
 
+# 目的、目的達成が主なため入力は必須
   validates :purpose,
    presence: true,
    length:{maximum: 20}
