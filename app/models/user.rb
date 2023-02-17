@@ -21,7 +21,7 @@ class User < ApplicationRecord
   validates :nickname,
    uniqueness: true,
    length: {minimum:2, maximum: 20}
-   
+
 # 自己紹介文、必須にはしない
   validates :introduction,
    length:{maximum: 50}
@@ -61,6 +61,8 @@ class User < ApplicationRecord
     end
       profile_image.variant(resize_to_limit:[width, height]).processed
   end
+
+  # フルネーム、かなも含めて設定
 
   def full_name
     last_name + " " + first_name
