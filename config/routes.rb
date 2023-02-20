@@ -22,12 +22,13 @@ Rails.application.routes.draw do
 
   scope module: :public do
     # userマイページ、編集画面、退会確認画面(unsubscribe)
-    # get '/users/my_page' =>'users#show'
+    # 退会更新URL:/user/withdraw
     get '/users/information/edit' =>'users#edit'
     patch '/users/information' =>'users#update'
     get '/users/unsubscribe' =>'users#unsubscribe'
     patch '/users/withdraw' =>'users#withdraw'
     resources:users,only:[:index, :show] do
+      # フォロー機能、いいね機能の設定
       member do
         get :follows, :followers
         get :favorites
@@ -35,7 +36,7 @@ Rails.application.routes.draw do
       resource :relationships, only:[:create, :destroy]
     end
     resources:to_do_posts,only:[:new, :create, :index, :show, :edit, :update, :destroy] do
-      resources:lists, only:[:new, :create, :edit, :update, :destroy]
+      # resources:lists, only:[:new, :create, :edit, :update, :destroy]
       resources:post_comments, only:[:create, :destroy]
       resource:favorites, only:[:create, :destroy]
     end
@@ -52,5 +53,5 @@ Rails.application.routes.draw do
       resources:post_comments, only:[:destroy]
     end
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end
