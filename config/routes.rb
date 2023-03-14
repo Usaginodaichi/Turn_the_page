@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   get 'top' =>'public/homes#top'
-  root to:"public/homes#top"
+  root to:'public/homes#top'
 
   scope module: :public do
     # userマイページ、編集画面、退会確認画面(unsubscribe)
