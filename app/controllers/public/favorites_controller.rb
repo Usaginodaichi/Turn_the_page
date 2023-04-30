@@ -1,16 +1,14 @@
 class Public::FavoritesController < ApplicationController
   before_action :authenticate_user!
   def create
-    to_do_post = ToDoPost.find(params[:to_do_post_id])
-    favorite = current_user.favorites.new(to_do_post_id:to_do_post.id)
+    @todopost = ToDoPost.find(params[:to_do_post_id])
+    favorite = current_user.favorites.new(to_do_post_id: params[:to_do_post_id])
     favorite.save
-    redirect_to to_do_post_path(to_do_post)
   end
 
   def destroy
-    to_do_post = ToDoPost.find(params[:to_do_post_id])
-    favorite = current_user.favorites.find_by(to_do_post_id:to_do_post.id)
+    @todopost = ToDoPost.find(params[:to_do_post_id])
+    favorite = current_user.favorites.find_by(to_do_post_id: params[:to_do_post_id])
     favorite.destroy
-    redirect_to to_do_post_path(to_do_post)
   end
 end

@@ -15,6 +15,7 @@ import "../stylesheets/application";
 import '@fortawesome/fontawesome-free/js/all';
 import '../stylesheets/mystyle.css';
 
+
 const images = require.context('../images', true)
 const imagePath = (name) => images(name, true)
 
