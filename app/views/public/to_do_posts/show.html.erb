@@ -31,6 +31,7 @@
         <span><i class="fas fa-user"></i><%= @todopost.user.nickname %> | </span>
         <p class="card-text">投稿日時:<%= @todopost.created_at.strftime('%Y/%m/%d') %></p>
         <p class="card-text">目標完了日:<%= @todopost.end_date.strftime('%Y/%m/%d') %></p>
+        <!--投稿者とログインしているユーザーが同じ時のみ、編集と削除機能が表示される-->
         <% if @todopost.user == current_user %>
          <%= link_to"編集する", edit_to_do_post_path(@todopost), class:"btn btn-primary" %>
          <%= link_to"削除する", to_do_post_path(@todopost), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-sm btn-danger" %>
